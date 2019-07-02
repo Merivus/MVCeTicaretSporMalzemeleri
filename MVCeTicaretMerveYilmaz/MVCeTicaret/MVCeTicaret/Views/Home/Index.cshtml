@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" style="margin-top:50px;">
+    <h2>EN'LERİMİZ</h2>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#FitnessMalzemeleri" aria-controls="FitnessMalzemeleri" role="tab" data-toggle="tab">Fitness Malzemeleri</a>
+        </li>
+
+        <li role="presentation">
+            <a href="#YazSporlari" aria-controls="YazSporlari" role="tab" data-toggle="tab">Yaz Sporları</a>
+        </li>
+
+        <li role="presentation">
+            <a href="#KampMalzemeleri" aria-controls="KampMalzemeleri" role="tab" data-toggle="tab">Kamp Malzemeleri</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="FitnessMalzemeleri">
+            @{
+                foreach (var item in TempData["FitnessMalzemeleri"] as IEnumerable<MVCeTicaret.Models.Product>)
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                            <div class="caption">
+                                <h4 style="height:70px;">
+                                    @item.Name - @string.Format("{0:C2}", item.UnitPrice)
+                                </h4>
+                                <p style="height:60px;overflow:auto;">
+                                    @item.ShortDescription
+                                </p>
+                                <p>
+                                    @* 1. LinkText  Görüntü ismi,2.StringAction Name Action ismi,3.ControllerName Control ismi, 4.routeValues sorgu değeri girdisi,5.htmlAttributes html özellikleri class rengi vs*@
+                                    @Html.ActionLink("Ürün Detayı", "ProductDetail", "Product", new { id = item.ProductID }, new { @class = "btn btn-primary form-control" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane fade" id="YazSporlari">
+            @{
+                foreach (var item in TempData["YazSporlari"] as IEnumerable<MVCeTicaret.Models.Product>)
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                            <div class="caption">
+                                <h4 style="height:70px;">
+                                    @item.Name - @string.Format("{0:C2}", item.UnitPrice)
+                                </h4>
+                                <p style="height:60px;overflow:auto;">
+                                    @item.ShortDescription
+                                </p>
+                                <p>
+                                    @* 1. LinkText  Görüntü ismi,2.StringAction Name Action ismi,3.ControllerName Control ismi, 4.routeValues sorgu değeri girdisi,5.htmlAttributes html özellikleri class rengi vs*@
+                                    @Html.ActionLink("Ürün Detayı", "ProductDetail", "Product", new { id = item.ProductID }, new { @class = "btn btn-primary form-control" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="KampMalzemeleri">
+            @{
+                foreach (var item in TempData["KampMalzemeleri"] as IEnumerable<MVCeTicaret.Models.Product>)
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                            <div class="caption">
+                                <h4 style="height:70px;">
+                                    @item.Name - @string.Format("{0:C2}", item.UnitPrice)
+                                </h4>
+                                <p style="height:60px;overflow:auto;">
+                                    @item.ShortDescription
+                                </p>
+                                <p>
+                                    @* 1. LinkText  Görüntü ismi,2.StringAction Name Action ismi,3.ControllerName Control ismi, 4.routeValues sorgu değeri girdisi,5.htmlAttributes html özellikleri class rengi vs*@
+                                    @Html.ActionLink("Ürün Detayı", "ProductDetail", "Product", new { id = item.ProductID }, new { @class = "btn btn-primary form-control" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
